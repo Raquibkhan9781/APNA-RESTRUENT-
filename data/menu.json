@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Pasta",
+    "price": 120,
+    "category": "Main Course",
+    "image": "/static/images/pasta.svg"
+  },
+  {
+    "id": 2,
+    "name": "Pizza",
+    "price": 199,
+    "category": "Main Course",
+    "image": "/static/images/pizza.svg"
+  },
+  {
+    "id": 3,
+    "name": "Momos",
+    "price": 100,
+    "category": "Snacks",
+    "image": "/static/images/momos.svg"
+  },
+  {
+    "id": 4,
+    "name": "Chowmein",
+    "price": 110,
+    "category": "Main Course",
+    "image": "/static/images/chowmein.svg"
+  },
+  {
+    "id": 5,
+    "name": "Chaat",
+    "price": 70,
+    "category": "Snacks",
+    "image": "/static/images/chaat.svg"
+  },
+  {
+    "id": 6,
+    "name": "Coffee",
+    "price": 60,
+    "category": "Beverage",
+    "image": "/static/images/coffee.svg"
+  },
+  {
+    "id": 7,
+    "name": "Tea",
+    "price": 30,
+    "category": "Beverage",
+    "image": "/static/images/tea.svg"
+  }
+]
