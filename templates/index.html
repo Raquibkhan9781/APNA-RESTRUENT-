@@ -1,54 +1,130 @@
-WELCOME TO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APNA RESTAURANT • Billing</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">WELCOME TO</p>
+        <h1>APNA RESTAURANT</h1>
+        <p class="tagline">GOOD FOOD • GOOD DAY</p>
+        <p class="sub-tagline">GOOD MOOD • GREAT MOMENTS</p>
+        <span class="status-pill">● Online Billing System</span>
+      </div>
+      <div class="hero-food" aria-hidden="true">
+        <img src="{{ url_for('static', filename='images/pizza.svg') }}" alt="" />
+      </div>
+    </div>
+  </header>
 
-APNA RESTAURANT
-GOOD FOOD • GOOD DAY
+  <main class="container">
+    <section class="top-grid">
+      <div class="card customer-card">
+        <div>
+          <p class="section-kicker">ORDER</p>
+          <h2>Customer Details</h2>
+        </div>
+        <label for="customerName">Customer name</label>
+        <input id="customerName" type="text" placeholder="Enter customer name" maxlength="60" />
+      </div>
 
-GOOD MOOD • GREAT MOMENTS
+      <div class="card add-card">
+        <div>
+          <p class="section-kicker">MENU</p>
+          <h2>Add New Item</h2>
+        </div>
+        <div class="form-row">
+          <input id="newItemName" type="text" placeholder="Item name" maxlength="40" />
+          <input id="newItemPrice" type="number" placeholder="Price ₹" min="1" step="0.01" />
+          <select id="newItemCategory">
+            <option>Main Course</option>
+            <option>Snacks</option>
+            <option>Beverage</option>
+            <option>Dessert</option>
+            <option>Other</option>
+          </select>
+          <input id="newItemImage" type="url" placeholder="Image URL (optional)" />
+          <button class="btn primary" id="addItemBtn">+ Add Item</button>
+        </div>
+        <p class="hint">No image URL? The app automatically uses a food placeholder.</p>
+      </div>
+    </section>
 
-● Online Billing System
+    <section class="workspace">
+      <div class="card menu-card">
+        <div class="card-heading">
+          <div>
+            <p class="section-kicker">CHOOSE YOUR FOOD</p>
+            <h2>Restaurant Menu</h2>
+          </div>
+          <input id="searchBox" class="search" type="search" placeholder="Search item…" />
+        </div>
+        <div id="menuGrid" class="menu-grid"></div>
+      </div>
 
-ORDER
+      <aside class="card cart-card">
+        <div class="card-heading">
+          <div>
+            <p class="section-kicker">YOUR ORDER</p>
+            <h2>Order Summary</h2>
+          </div>
+          <button class="icon-btn" id="clearCartBtn" title="Clear order">×</button>
+        </div>
 
-Customer Details
-Customer name 
-Enter customer name
-MENU
+        <div id="cartItems" class="cart-items empty-state">
+          <div class="empty-icon">🛒</div>
+          <p>Your cart is empty.</p>
+          <span>Add items from the menu to begin.</span>
+        </div>
 
-Add New Item
-Item name
- 
-Price ₹
- 
-Main Course
- 
-Image URL (optional)
- + Add Item
-No image URL? The app automatically uses a food placeholder.
+        <div class="bill-box">
+          <div><span>Subtotal</span><strong id="subtotal">₹0.00</strong></div>
+          <div><span>GST / Tax (5%)</span><strong id="tax">₹0.00</strong></div>
+          <div class="grand"><span>Total Amount</span><strong id="grandTotal">₹0.00</strong></div>
+        </div>
 
-CHOOSE YOUR FOOD
+        <button class="btn confirm-btn" id="confirmBtn" disabled>Confirm Order &amp; Generate Bill</button>
+      </aside>
+    </section>
 
-Restaurant Menu
-Search item…
-YOUR ORDER
+    <section class="card manage-card">
+      <div class="card-heading">
+        <div>
+          <p class="section-kicker">MANAGE</p>
+          <h2>Current Items</h2>
+        </div>
+        <span class="hint">Delete an item only when you no longer want it on the menu.</span>
+      </div>
+      <div id="itemManager" class="item-manager"></div>
+    </section>
+  </main>
 
-Order Summary
-×
-🛒
-Your cart is empty.
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-Add items from the menu to begin.
-Subtotal₹0.00
-GST / Tax (5%)₹0.00
-Total Amount₹0.00
-Confirm Order & Generate Bill
-MANAGE
+  <div id="billModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="bill-modal">
+      <div class="bill-top">
+        <div>
+          <p class="section-kicker">ORDER CONFIRMED</p>
+          <h2>APNA RESTAURANT</h2>
+          <p>GOOD MOOD • GREAT MOMENTS</p>
+        </div>
+        <button class="icon-btn" data-close-modal>×</button>
+      </div>
+      <div id="billContent"></div>
+      <div class="modal-actions">
+        <button class="btn secondary" id="printBtn">🖨 Print Bill</button>
+        <button class="btn primary" data-close-modal>Done</button>
+      </div>
+    </div>
+  </div>
 
-Current Items
-Delete an item only when you no longer want it on the menu.
-ORDER CONFIRMED
-
-APNA RESTAURANT
-GOOD MOOD • GREAT MOMENTS
-
-×
-🖨 Print Bill Done
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
